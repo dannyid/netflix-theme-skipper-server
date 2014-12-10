@@ -1,0 +1,19 @@
+{
+  "name": "netflix-theme-skipper-server",
+  "version": "0.1.0",
+  "description": "Server that talks to mongoDb",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dannyid/netflix-theme-skipper-server.git"
+  },
+  "author": "dannyid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannyid/netflix-theme-skipper-server/issues"
+  },
+  "homepage": "https://github.com/dannyid/netflix-theme-skipper-server"
+}
