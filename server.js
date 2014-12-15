@@ -17,7 +17,8 @@ app.post("/:episodeId", function(req, res){
   var episodeObject = {
     episodeId: req.params.episodeId,
     themeStart: req.body.themeStart,
-    themeEnd: req.body.themeEnd
+    themeEnd: req.body.themeEnd,
+    timestamp: new Date().getTime()
   };
 
   MongoClient.connect(dbUrl, function(err, db) {
