@@ -17,6 +17,11 @@ app.use(function(req, res, next) {
 app.use( bodyParser.urlencoded( {extended: true} ) );
 app.use( bodyParser.json() );
 
+app.get("/", function(req, res){
+  res.status(200).send("You shouldn't be here.");
+  res.end();
+});
+
 app.post("/:episodeId", function(req, res){
   console.log(req.params.episodeId);
   var episodeObject = {
