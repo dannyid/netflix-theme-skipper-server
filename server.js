@@ -25,9 +25,9 @@ app.get("/", function(req, res){
 app.post("/:episodeId", function(req, res){
   console.log(req.params.episodeId);
   var episodeObject = {
-    episodeId: req.params.episodeId,
-    themeStart: req.body.themeStart,
-    themeEnd: req.body.themeEnd,
+    episodeId: parseInt(req.params.episodeId),
+    themeStart: parseInt(req.body.themeStart),
+    themeEnd: parseInt(req.body.themeEnd),
     timestamp: new Date().getTime()
   };
 
@@ -70,7 +70,7 @@ function insertEpisode(db, episodeObject, callback) {
 function getEpisode(db, episodeId, callback) {
   var episodes = db.collection('episodes');
   
-  episodes.find({episodeId: episodeId}).toArray(function(err, documents){
+  episodes.find({episodeId: parseInt(episodeId)}).toArray(function(err, documents){
     assert.equal(err, null);
     callback(documents);
   })
