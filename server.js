@@ -7,7 +7,7 @@ var express = require('express')
   , server = http.createServer(app)
   , MongoClient = require('mongodb').MongoClient
   , assert = require('assert')
-  , dbUrl = 'mongodb://localhost:27017/myproject';
+  , dbUrl = process.env.DATABASE_URL;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
