@@ -25,6 +25,12 @@ app.get("/", function(req, res){
 app.post("/:episodeId", function(req, res){
   console.log(req.params.episodeId);
   var episodeObject = {
+    seriesTitle:  req.params.seriesTitle,
+    seriesId:     parseInt(req.body.seriesId),
+    seasonNum:    parseInt(req.body.seasonNum),
+    seasonId:     parseInt(req.body.seasonId),
+    seasonYear:   parseInt(req.body.seasonYear),
+    episodeTitle: req.params.episodeTitle,
     episodeId: parseInt(req.params.episodeId),
     themeStart: parseInt(req.body.themeStart),
     themeEnd: parseInt(req.body.themeEnd),
