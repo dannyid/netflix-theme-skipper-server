@@ -1,13 +1,13 @@
 var appPort =  process.env.PORT || 3000;
 
 var express = require('express') 
-  , bodyParser =  require('body-parser')
   , app = express()
   , http = require('http')
   , server = http.createServer(app)
+  , bodyParser =  require('body-parser')
   , MongoClient = require('mongodb').MongoClient
   , assert = require('assert')
-  , dbUrl = process.env.DATABASE_URL;
+  , DATABASE_URL = process.env.DATABASE_URL;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -31,13 +31,13 @@ app.post("/:episodeId", function(req, res){
     seasonId:     parseInt(req.body.seasonId),
     seasonYear:   parseInt(req.body.seasonYear),
     episodeTitle: req.params.episodeTitle,
-    episodeId: parseInt(req.params.episodeId),
-    themeStart: parseInt(req.body.themeStart),
-    themeEnd: parseInt(req.body.themeEnd),
-    timestamp: new Date().getTime()
+    episodeId:    parseInt(req.params.episodeId),
+    themeStart:   parseInt(req.body.themeStart),
+    themeEnd:     parseInt(req.body.themeEnd),
+    timestamp:    new Date().getTime()
   };
 
-  MongoClient.connect(dbUrl, function(err, db) {
+  MongoClient.connect(DATABASE_URL, function(err, db) {
     assert.equal(null, err);
 
     insertEpisode(db, episodeObject, function(result) {
@@ -50,7 +50,7 @@ app.post("/:episodeId", function(req, res){
 });
 
 app.get("/:episodeId", function(req, res){
-  MongoClient.connect(dbUrl, function(err, db) {
+  MongoClient.connect(DATABASE_URL, function(err, db) {
     assert.equal(null, err);
 
     getEpisode(db, req.params.episodeId, function(result) {
